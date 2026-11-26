@@ -21,14 +21,15 @@ Las rutas están en el repo COMPARA-CONEJO, archivo `promo100.js`:
 - La consulta automática de Ruthina lo resuelve usando **solo Bancor y Nación**.
 - Si los bancos no contestan en el tiempo límite, la landing dice "Recibimos tus datos" y un asesor lo revisa.
 
-Variables opcionales en Railway (compara-conejo): `PROMO100_CUPOS` (50), `PROMO100_MAX_POR_IP` (8).
+Los 50 cupos son fijos (estrategia comercial): no se cuentan ni se descuentan.
+
+Variable opcional en Railway (compara-conejo): `PROMO100_MAX_POR_IP` (8).
 
 ## Endpoints que usa la página
-- `POST /api/promo100/calificar` → `{estado: pendiente, id}` o `{estado: agotado}`
+- `POST /api/promo100/calificar` → `{estado: pendiente, id}`
 - `GET /api/promo100/estado/:id` → `{estado: pendiente|aprobado|rechazado|revision}`
-- `GET /api/promo100/cupos` → `{total: 50, restantes}`
 
 ## Errores comunes
-- **Siempre "No pudimos hacer la consulta"**: abrir `https://compara-conejo-production.up.railway.app/api/promo100/cupos`; si no responde `{total, restantes}`, compara-conejo no tiene la última versión desplegada.
+- **Siempre "No pudimos hacer la consulta"**: abrir `https://compara-conejo-production.up.railway.app/api/promo100/estado/1`; si responde `Cannot GET`, compara-conejo no tiene la última versión desplegada (con la versión nueva responde `No existe` o un estado).
 - **Muchos "Recibimos tus datos"**: las sesiones de Bancor o Nación en Consulta Créditos están cerradas (ver el estado en Pedidos Bancos).
 - **429**: el mismo IP hizo más de 8 consultas en una hora (límite anti-abuso de la ruta).

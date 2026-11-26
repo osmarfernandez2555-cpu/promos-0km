@@ -211,8 +211,8 @@
             <li><b>3</b>Dejá un teléfono para que te llame un asesor.</li>
           </ol>
           <div class="cupos" aria-label="Cupos de la promo">
-            <span class="cupos__n" data-cupos>50</span>
-            <span class="cupos__t" data-cupos-txt>cupos en total para esta promo</span>
+            <span class="cupos__n">50</span>
+            <span class="cupos__t">cupos en total para esta promo</span>
           </div>
         </div>
         <div class="span-6 start-7">
@@ -274,10 +274,6 @@
               <h3>Recibimos tus datos.</h3>
               <p>Los bancos no respondieron a tiempo. Un asesor de Tutu Automotores revisa tu caso y te llama al teléfono que dejaste.</p>
             </div>
-            <div class="resultado" data-res="agotado" hidden tabindex="-1">
-              <h3>Se completaron los 50 cupos.</h3>
-              <p>Un asesor de Tutu Automotores puede contarte las otras formas de financiar tu Fiat.</p>
-            </div>
             <div class="resultado" data-res="error" hidden tabindex="-1">
               <h3>No pudimos hacer la consulta ahora.</h3>
               <p>Tus datos siguen cargados. Probá de nuevo en unos minutos.</p>
@@ -298,7 +294,7 @@
           </div>
           <div class="faq">
             <div class="faq__item"><h3>¿Tengo que poner entrega?</h3><p>No. Se financia el 100% del auto; el patentamiento no está incluido.</p></div>
-            <div class="faq__item"><h3>¿Cuántos cupos hay?</h3><p>50 en total. Cuando se completan, la promo termina.</p></div>
+            <div class="faq__item"><h3>¿Cuántos cupos hay?</h3><p>La promo tiene 50 cupos en total.</p></div>
             <div class="faq__item"><h3>¿Y si mi DNI no califica?</h3><p>Podés probar con el DNI de una persona de confianza que saque el crédito a su nombre.</p></div>
             <div class="faq__item"><h3>¿Quién me llama?</h3><p>Un asesor de Tutu Automotores, al teléfono que dejaste, para cerrar la operación.</p></div>
           </div>
@@ -344,10 +340,9 @@
 /* Promo 100% financiado: califica por Ruthina (solo Bancor y Banco Nación).
    Backend: compara-conejo (Ruthina), archivo promo100.js:
      POST {api}/api/promo100/calificar  {cuit, auto, telefono, dni?, genero?, origen}
-       -> {estado: "pendiente", id} | {estado: "agotado"}
+       -> {estado: "pendiente", id}
      GET  {api}/api/promo100/estado/:id -> {estado: "pendiente" | "aprobado" | "rechazado" | "revision"}
-     GET  {api}/api/promo100/cupos      -> {total: 50, restantes: n}
-   Al cliente nunca se le muestra el banco ni el monto. */
+   Al cliente nunca se le muestra el banco ni el monto. Los 50 cupos son fijos: no se descuentan. */
 (function () {
   const form = document.getElementById('form-califica');
   const card = document.getElementById('califica-card');
@@ -389,14 +384,6 @@
     return pre + dni + dv;
   }
 
-  // cupos: el número real si Ruthina lo da; si no, queda "50 en total"
-  if (API) fetch(API + '/api/promo100/cupos').then(r => r.ok ? r.json() : null).then(d => {
-    if (d && Number.isFinite(d.restantes)) {
-      document.querySelector('[data-cupos]').textContent = d.restantes;
-      document.querySelector('[data-cupos-txt]').textContent = d.restantes === 1 ? 'cupo disponible de 50' : 'cupos disponibles de 50';
-    }
-  }).catch(() => {});
-
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   async function consultar(body) {
     const res = await fetch(API + '/api/promo100/calificar', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) });
@@ -436,7 +423,6 @@
       const d = await consultar(body);
       if (d.estado === 'aprobado') show('ok');
       else if (d.estado === 'rechazado') show('no');
-      else if (d.estado === 'agotado') show('agotado');
       else if (d.estado === 'revision' || d.estado === 'pendiente') show('revision');
       else show('error');
     } catch { show('error'); }
