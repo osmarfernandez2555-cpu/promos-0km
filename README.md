@@ -19,7 +19,8 @@ La landing llama a `https://compara-conejo-production.up.railway.app` (atributo 
 Las rutas están en el repo COMPARA-CONEJO, archivo `promo100.js`:
 - Cada consulta abre un pedido en "Pedidos Bancos" con origen `promo-100`.
 - La consulta automática de Ruthina lo resuelve usando **solo Bancor y Nación**.
-- Si los bancos no contestan en el tiempo límite, la landing dice "Recibimos tus datos" y un asesor lo revisa.
+- Entra a la promo solo si Bancor o Nación aprueban **más de $ 6.000.000** (variable `PROMO100_MONTO_MIN` en compara-conejo). Si aprueban menos o rechazan, la landing pide probar con otro DNI.
+- Si los bancos no contestan a tiempo, o aprueban sin informar monto, la landing dice "Recibimos tus datos" y un asesor lo revisa.
 
 Los cupos se muestran como "limitados" (estrategia comercial): no se cuentan ni se descuentan.
 
