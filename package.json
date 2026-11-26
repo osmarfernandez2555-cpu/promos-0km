@@ -2,7 +2,7 @@
   "name": "promos-0km",
   "version": "1.0.0",
   "private": true,
-  "description": "Landing Tutu Automotores: Fiat Cronos, Argo y Strada 100% financiados (50 cupos)",
+  "description": "Landing Tutu Automotores: Fiat Cronos, Argo y Strada 100% financiados (cupos limitados)",
   "scripts": {
     "start": "serve . -l ${PORT:-3000}"
   },

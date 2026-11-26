@@ -1,6 +1,6 @@
 # Promos 0 km — Tutu Automotores
 
-Landing de la promo **Fiat Cronos, Argo y Strada 100% financiados (50 cupos)**.
+Landing de la promo **Fiat Cronos, Argo y Strada 100% financiados (cupos limitados)**.
 Califica con CUIT, o con DNI + género (calcula el CUIL), contra Ruthina usando solo Bancor y Banco Nación.
 
 ## Archivos
@@ -21,9 +21,11 @@ Las rutas están en el repo COMPARA-CONEJO, archivo `promo100.js`:
 - La consulta automática de Ruthina lo resuelve usando **solo Bancor y Nación**.
 - Si los bancos no contestan en el tiempo límite, la landing dice "Recibimos tus datos" y un asesor lo revisa.
 
-Los 50 cupos son fijos (estrategia comercial): no se cuentan ni se descuentan.
+Los cupos se muestran como "limitados" (estrategia comercial): no se cuentan ni se descuentan.
 
 Variable opcional en Railway (compara-conejo): `PROMO100_MAX_POR_IP` (8).
+
+En Ruthina, Pedidos Bancos → pestaña **🔷 Promos 0km** muestra el volumen, los que califican y los rechazados (`GET /api/promo100/resumen`).
 
 ## Endpoints que usa la página
 - `POST /api/promo100/calificar` → `{estado: pendiente, id}`

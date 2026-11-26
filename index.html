@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tutu Automotores: Fiat 0 km financiado al 100% en Córdoba</title>
-<meta name="description" content="Fiat Cronos, Argo o Strada con el 100% financiado. Son 50 cupos: cargá tu CUIT o DNI y fijate si calificás.">
+<meta name="description" content="Fiat Cronos, Argo o Strada con el 100% financiado. Cupos limitados: cargá tu CUIT o DNI y fijate si calificás.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fiat 0 km financiado al 100%: 50 cupos en Tutu Automotores">
+<meta property="og:title" content="Fiat 0 km financiado al 100%, cupos limitados en Tutu Automotores">
 <meta property="og:description" content="Cronos, Argo o Strada financiados completos. Fijate si calificás con tu CUIT o DNI.">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -51,13 +51,17 @@
   .nav__logo img { height: 36px; width: auto; }
   .footer .nav__logo img { height: 44px; }
   .hero-notice { font-weight: 500; }
+  /* los datos del hero van debajo de los botones, sin la línea que cruzaba por debajo de los autos */
+  .hero--photo[data-calm="left"] .hero__facts { position: static; border-top: 0; padding-top: 0; margin-top: var(--s-7); }
+  @media (min-width: 1024px) { .hero--photo[data-calm="left"] .hero__facts { width: calc(50% - var(--gutter) / 2); } .hero--photo[data-calm="left"] .hero__facts > div { grid-column: auto / span 4; } }
+  .hero--photo[data-calm="left"] > .wrap > .hero-text { justify-content: center; }
 
   #modelos .panel { --p-h: 300px; background: radial-gradient(120% 90% at 50% 100%, #1f5bff 0%, #0b1f6e 62%); }
   #modelos .panel img { position: absolute; inset: auto 6% 10% 6%; width: 88%; height: auto; object-fit: contain; }
   .menu-card .panel { --p-h: 200px; background: radial-gradient(120% 90% at 50% 100%, #1f5bff 0%, #0b1f6e 62%); }
   .menu-card .panel img { position: absolute; inset: auto 8% 10% 8%; width: 84%; height: auto; }
 
-  .cupos { display: flex; align-items: baseline; gap: var(--s-4); margin-top: var(--s-8); }
+  .cupos { display: flex; flex-direction: column; gap: var(--s-1); margin-top: var(--s-8); }
   .cupos__n { font: italic 800 var(--t-stat)/1 var(--font-display); font-stretch: 112%; letter-spacing: -0.03em; }
   .cupos__t { font-size: var(--t-lead); font-weight: 500; max-width: 16ch; line-height: 1.3; }
   #califica.ground-brand { --p-accent: #1747d6; }
@@ -158,14 +162,13 @@
     <img class="hero__bg" src="img/hero-autos.jpg" alt="Fiat Cronos, Fiat Strada y Fiat Argo 0 km sobre fondo azul" style="--ly-pos: 100% 50%; --ly-pos-phone: 100% 72%" fetchpriority="high" data-source="client" data-subject="los tres Fiat de la promo">
     <div class="wrap"><div class="hero-text">
       <div class="hero__text">
-        <p class="hero-notice">Promo con 50 cupos</p>
+        <p class="hero-notice">Promo con cupos limitados</p>
         <h1 id="hero-h">Fiat 0 km financiado al 100%</h1>
-        <p class="hero__lead">Cronos, Argo o Strada financiado completo en Tutu Automotores, Córdoba. Son 50 cupos.</p>
+        <p class="hero__lead">Cronos, Argo o Strada financiado completo en Tutu Automotores, Córdoba. Cupos limitados.</p>
         <div class="btn-row"><a class="btn btn--primary" href="#califica">Ver si califico<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="#modelos">Ver los modelos</a></div>
       </div>
       <dl class="hero__facts">
-        <div><dt>Cupos</dt><dd>50 en total</dd></div>
-        <div><dt>Modelos</dt><dd>Cronos, Argo y Strada</dd></div>
+        <div><dt>Cupos</dt><dd>Limitados</dd></div>
         <div><dt>Financiación</dt><dd>El 100% del auto</dd></div>
         <div><dt>Patentamiento</dt><dd>No incluido</dd></div>
       </dl>
@@ -211,8 +214,8 @@
             <li><b>3</b>Dejá un teléfono para que te llame un asesor.</li>
           </ol>
           <div class="cupos" aria-label="Cupos de la promo">
-            <span class="cupos__n">50</span>
-            <span class="cupos__t">cupos en total para esta promo</span>
+            <span class="cupos__n">Cupos limitados</span>
+            <span class="cupos__t">para esta promo</span>
           </div>
         </div>
         <div class="span-6 start-7">
@@ -294,7 +297,7 @@
           </div>
           <div class="faq">
             <div class="faq__item"><h3>¿Tengo que poner entrega?</h3><p>No. Se financia el 100% del auto; el patentamiento no está incluido.</p></div>
-            <div class="faq__item"><h3>¿Cuántos cupos hay?</h3><p>La promo tiene 50 cupos en total.</p></div>
+            <div class="faq__item"><h3>¿Hay cupos para todos?</h3><p>No. La promo tiene cupos limitados.</p></div>
             <div class="faq__item"><h3>¿Y si mi DNI no califica?</h3><p>Podés probar con el DNI de una persona de confianza que saque el crédito a su nombre.</p></div>
             <div class="faq__item"><h3>¿Quién me llama?</h3><p>Un asesor de Tutu Automotores, al teléfono que dejaste, para cerrar la operación.</p></div>
           </div>
@@ -309,7 +312,7 @@
   <div class="wrap">
     <div class="closing__cta close--word">
       <div class="section-head--split">
-        <div><h2 id="close-h">Reservá uno de los 50 cupos</h2><p class="t-lead">Cargá tu CUIT o tu DNI y un asesor te llama si calificás.</p></div>
+        <div><h2 id="close-h">Reservá tu cupo en la promo</h2><p class="t-lead">Cargá tu CUIT o tu DNI y un asesor te llama si calificás.</p></div>
         <a class="btn btn--primary" href="#califica">Ver si califico<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
       </div>
       <p class="close__word" aria-hidden="true">Tutu</p>
@@ -342,7 +345,7 @@
      POST {api}/api/promo100/calificar  {cuit, auto, telefono, dni?, genero?, origen}
        -> {estado: "pendiente", id}
      GET  {api}/api/promo100/estado/:id -> {estado: "pendiente" | "aprobado" | "rechazado" | "revision"}
-   Al cliente nunca se le muestra el banco ni el monto. Los 50 cupos son fijos: no se descuentan. */
+   Al cliente nunca se le muestra el banco ni el monto. Los cupos se muestran como "limitados": no se cuentan ni se descuentan. */
 (function () {
   const form = document.getElementById('form-califica');
   const card = document.getElementById('califica-card');
