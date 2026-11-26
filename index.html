@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es-AR" data-type="product" data-radius="soft" data-buttons="arrow" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tutu Automotores: Fiat 0 km financiado al 100% en Córdoba</title>
+<meta name="description" content="Fiat Cronos, Argo o Strada con el 100% financiado. Son 50 cupos: cargá tu CUIT o DNI y fijate si calificás.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fiat 0 km financiado al 100%: 50 cupos en Tutu Automotores">
+<meta property="og:description" content="Cronos, Argo o Strada financiados completos. Fijate si calificás con tu CUIT o DNI.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png" type="image/png">
+<meta name="theme-color" content="#06134a">
+<!-- <link rel="canonical" href="https://(dominio de la promo)/"> -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="product">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wdth,wght@0,75..125,400..900;1,75..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #06134a; --p-surface: #0b1f6e; --p-ink: #ffffff; --p-muted: #b9c6f2;
+  --p-accent: #1f5bff; --p-accent-ink: #ffffff; --p-action: #1f5bff; --p-action-ink: #ffffff;
+  --p-inv-bg: #ffffff; --p-inv-surface: #ebedf2; --p-inv-ink: #06134a; --p-inv-muted: #57688e;
+  --p-inv-accent: #1f5bff; --p-inv-accent-ink: #ffffff; --p-inv-action: #1f5bff; --p-inv-action-ink: #ffffff;
+  --font-display: "Mona Sans", system-ui, sans-serif;
+  --font-text: "Mona Sans", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --display-stretch: 104%;
+  --ly-scale: 0.96;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/picture-develops/moment.js">
+<!-- page CSS: el estilo de las placas de Tutu (itálica pesada y ancha, como los flyers), las tarjetas de los
+     modelos, el selector de auto del formulario y el panel de resultado -->
+<style>
+  :is(h1, h2, .close__word) { font-style: italic; font-weight: 800; font-stretch: 112%; letter-spacing: -0.02em; }
+  .hero--photo h1 { text-transform: uppercase; line-height: .98; }
+  .nav__logo img { height: 36px; width: auto; }
+  .footer .nav__logo img { height: 44px; }
+  .hero-notice { font-weight: 500; }
+
+  #modelos .panel { --p-h: 300px; background: radial-gradient(120% 90% at 50% 100%, #1f5bff 0%, #0b1f6e 62%); }
+  #modelos .panel img { position: absolute; inset: auto 6% 10% 6%; width: 88%; height: auto; object-fit: contain; }
+  .menu-card .panel { --p-h: 200px; background: radial-gradient(120% 90% at 50% 100%, #1f5bff 0%, #0b1f6e 62%); }
+  .menu-card .panel img { position: absolute; inset: auto 8% 10% 8%; width: 84%; height: auto; }
+
+  .cupos { display: flex; align-items: baseline; gap: var(--s-4); margin-top: var(--s-8); }
+  .cupos__n { font: italic 800 var(--t-stat)/1 var(--font-display); font-stretch: 112%; letter-spacing: -0.03em; }
+  .cupos__t { font-size: var(--t-lead); font-weight: 500; max-width: 16ch; line-height: 1.3; }
+  #califica.ground-brand { --p-accent: #1747d6; }
+  #califica .section-head p { color: var(--ink); }
+  .close__word { padding-inline-end: .12em; padding-block-start: .08em; line-height: 1.1; }
+  .pasos { margin: var(--s-6) 0 0; padding: 0; list-style: none; display: grid; gap: var(--s-3); font-size: var(--t-body); }
+  .pasos li { display: flex; gap: var(--s-3); align-items: baseline; }
+  .pasos b { font-weight: 500; min-width: 1.5em; }
+
+  .califica-card { background: var(--p-bg); color: var(--p-ink); border-radius: var(--r-lg); padding: var(--s-7);
+    --bg: var(--p-bg); --ink: var(--p-ink); --muted: var(--p-muted); --action: var(--p-action); --action-ink: var(--p-action-ink);
+    --line: color-mix(in oklab, #fff 14%, transparent); --line-strong: color-mix(in oklab, #fff 30%, transparent); }
+  .califica-card .field :is(input, select) { background: var(--p-surface); color: #fff; border-color: var(--line-strong); }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); border: 0; padding: 0; margin: 0; grid-column: 1 / -1; }
+  .seg legend, .autos legend { font-size: var(--t-small); font-weight: 500; margin-bottom: var(--s-2); padding: 0; }
+  .seg label, .autos label { position: relative; display: flex; align-items: center; justify-content: center; min-height: 48px;
+    border: 1px solid var(--line-strong); border-radius: var(--r-sm); cursor: pointer; font-weight: 500; font-size: var(--t-body); }
+  .seg input, .autos input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .seg input:checked + span, .autos input:checked + span { color: #fff; }
+  .seg label:has(input:checked), .autos label:has(input:checked) { background: var(--p-action); border-color: var(--p-action); }
+  .seg label:has(input:focus-visible), .autos label:has(input:focus-visible) { outline: 2px solid #fff; outline-offset: 2px; }
+  .autos { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-2); border: 0; padding: 0; margin: 0; grid-column: 1 / -1; }
+  .autos label { flex-direction: column; gap: var(--s-1); padding: var(--s-2); }
+  .autos img { width: 100%; height: 56px; object-fit: contain; }
+  .field--full { grid-column: 1 / -1; }
+  .grupo[hidden] { display: none !important; }
+  .grupo { display: contents; }
+  .resultado { display: grid; gap: var(--s-4); align-content: start; min-height: 100%; }
+  .resultado h3 { font: italic 800 var(--t-h3)/1.15 var(--font-display); font-stretch: 112%; margin: 0; }
+  .resultado p { margin: 0; font-size: var(--t-lead); line-height: 1.5; }
+  .espera { display: flex; gap: var(--s-3); align-items: center; font-size: var(--t-body); }
+  .espera i { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line-strong); border-top-color: #fff; animation: gira .9s linear infinite; }
+  @keyframes gira { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .espera i { animation: none; } }
+  @media (min-width: 1024px) and (max-width: 1279px) { #modelos .grid > .card { grid-column: span 4; } #modelos .panel { --p-h: 220px; } }
+  @media (min-width: 640px) and (max-width: 1023px) { #modelos { --h: 2; } #modelos .panel { --p-h: 320px; } }
+  .develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(600px, var(--ly-fit, 600px)); }
+  .develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 1023px) { .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
+  @media (max-width: 639px) {
+    .hero-notice { display: none; }
+    #preguntas .develop { display: none; }
+    .hero--photo .btn-row .btn--secondary { display: none; }
+    .califica-card { padding: var(--s-5); }
+    #modelos .panel { --p-h: 170px; }
+    .autos img { height: 40px; }
+    .cupos { margin-top: var(--s-5); flex-direction: column; gap: var(--s-1); }
+  }
+</style>
+</head>
+<body>
+<!-- type: product (autos 0 km 100% financiados; Tutu Automotores, concesionaria en Córdoba)
+     deal: hero photo, nav nav-cards, close close-word, footer footer-columns, rhythm brand-band, buttons arrow,
+     mark: el logo propio de Tutu (reemplaza ring); palette: los colores del cliente (azul y blanco de sus placas) via start.mjs brand
+     moments: picture-develops en #modelos -->
+
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Ir al contenido</a>
+    <a class="nav__logo" href="#top" aria-label="Tutu Automotores, inicio"><img src="img/tutu-logo.png" alt="Tutu Automotores" width="452" height="143"></a>
+    <nav class="nav__links" aria-label="Principal">
+      <div class="nav__item">
+        <a class="nav__link" href="#modelos">Modelos <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <a class="menu-card span-4" href="#califica" data-auto="cronos">
+              <div class="panel"><img class="frame__img" src="img/cronos.webp" alt="Fiat Cronos gris, de frente" loading="lazy"></div>
+              <span class="t-card">Fiat Cronos Drive 1.3</span>
+              <span class="t-small muted">Sedán de cuatro puertas</span>
+            </a>
+            <a class="menu-card span-4" href="#califica" data-auto="argo">
+              <div class="panel"><img class="frame__img" src="img/argo.webp" alt="Fiat Argo plateado, de frente" loading="lazy"></div>
+              <span class="t-card">Fiat Argo Drive MT</span>
+              <span class="t-small muted">Hatchback de cinco puertas</span>
+            </a>
+            <a class="menu-card span-4" href="#califica" data-auto="strada">
+              <div class="panel"><img class="frame__img" src="img/strada.webp" alt="Fiat Strada negra doble cabina" loading="lazy"></div>
+              <span class="t-card">Fiat Strada Freedom CD 1.3</span>
+              <span class="t-small muted">Pickup doble cabina</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#califica">Calificar</a></div>
+      <div class="nav__item"><a class="nav__link" href="#preguntas">Preguntas</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#califica">Ver si califico</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menú">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--photo" data-enter data-calm="left" data-box="none" data-tone="dark" aria-labelledby="hero-h">
+    <img class="hero__bg" src="img/hero-autos.jpg" alt="Fiat Cronos, Fiat Strada y Fiat Argo 0 km sobre fondo azul" style="--ly-pos: 100% 50%; --ly-pos-phone: 100% 72%" fetchpriority="high" data-source="client" data-subject="los tres Fiat de la promo">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
+        <p class="hero-notice">Promo con 50 cupos</p>
+        <h1 id="hero-h">Fiat 0 km financiado al 100%</h1>
+        <p class="hero__lead">Cronos, Argo o Strada financiado completo en Tutu Automotores, Córdoba. Son 50 cupos.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#califica">Ver si califico<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="#modelos">Ver los modelos</a></div>
+      </div>
+      <dl class="hero__facts">
+        <div><dt>Cupos</dt><dd>50 en total</dd></div>
+        <div><dt>Modelos</dt><dd>Cronos, Argo y Strada</dd></div>
+        <div><dt>Financiación</dt><dd>El 100% del auto</dd></div>
+        <div><dt>Patentamiento</dt><dd>No incluido</dd></div>
+      </dl>
+    </div></div>
+  </section>
+
+  <section class="section" id="modelos" aria-labelledby="modelos-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="modelos-h">Tres Fiat 0 km para elegir. <span class="muted">Los tres entran en la promo de 100% financiado.</span></h2>
+      </div>
+      <div class="grid">
+        <a class="card card--open span-4" href="#califica" data-auto="cronos">
+          <div class="panel"><img class="frame__img" src="img/cronos.webp" alt="Fiat Cronos Drive 1.3 gris, vista de tres cuartos" loading="lazy"></div>
+          <h3>Fiat Cronos Drive 1.3</h3>
+          <p>Sedán de cuatro puertas con baúl, motor 1.3.</p>
+        </a>
+        <a class="card card--open span-4" href="#califica" data-auto="argo">
+          <div class="panel"><img class="frame__img" src="img/argo.webp" alt="Fiat Argo Drive MT plateado, vista de tres cuartos" loading="lazy"></div>
+          <h3>Fiat Argo Drive MT</h3>
+          <p>Hatchback de cinco puertas con caja manual.</p>
+        </a>
+        <a class="card card--open span-4" href="#califica" data-auto="strada">
+          <div class="panel"><img class="frame__img" src="img/strada.webp" alt="Fiat Strada Freedom doble cabina negra, vista de tres cuartos" loading="lazy"></div>
+          <h3>Fiat Strada Freedom CD 1.3</h3>
+          <p>Pickup doble cabina con caja de carga, motor 1.3.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ground-brand" id="califica" aria-labelledby="califica-h" style="--hm: 2">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-5">
+          <div class="section-head">
+            <h2 id="califica-h">Calificación con tu CUIT o tu DNI</h2>
+            <p>Lo consultamos en el momento y te mostramos el resultado acá mismo.</p>
+          </div>
+          <ol class="pasos">
+            <li><b>1</b>Elegí el auto que querés.</li>
+            <li><b>2</b>Cargá tu CUIT, o tu DNI y tu género.</li>
+            <li><b>3</b>Dejá un teléfono para que te llame un asesor.</li>
+          </ol>
+          <div class="cupos" aria-label="Cupos de la promo">
+            <span class="cupos__n" data-cupos>50</span>
+            <span class="cupos__t" data-cupos-txt>cupos en total para esta promo</span>
+          </div>
+        </div>
+        <div class="span-6 start-7">
+          <div class="califica-card" id="califica-card">
+            <!-- Formulario: califica con Ruthina, solo Banco de Córdoba (Bancor) y Banco Nación.
+                 data-api: la URL del servicio de Ruthina en Railway que atiende /api/promo100 (ver promo100-route.js). -->
+            <form class="form" id="form-califica" action="mailto:promo@tutuautomotores.example" method="post" enctype="text/plain"
+                  data-api="" data-fix="Revisá {n} datos." novalidate>
+              <fieldset class="seg">
+                <legend>Calificar con</legend>
+                <label><input type="radio" name="modo" value="cuit" checked><span>CUIT o CUIL</span></label>
+                <label><input type="radio" name="modo" value="dni"><span>DNI</span></label>
+              </fieldset>
+              <div class="grupo" data-grupo="cuit">
+                <div class="field field--full"><label for="f-cuit">CUIT o CUIL</label>
+                  <input id="f-cuit" name="cuit" type="text" inputmode="numeric" autocomplete="off" required pattern="\s*\d{2}-?\d{8}-?\d\s*" aria-describedby="f-cuit-err">
+                  <p class="field__error" id="f-cuit-err" hidden>Escribí los 11 números del CUIT o CUIL, con o sin guiones.</p></div>
+              </div>
+              <div class="grupo" data-grupo="dni" hidden>
+                <div class="field"><label for="f-dni">DNI</label>
+                  <input id="f-dni" name="dni" type="text" inputmode="numeric" autocomplete="off" required pattern="\s*\d{1,2}\.?\d{3}\.?\d{3}\s*" disabled aria-describedby="f-dni-err">
+                  <p class="field__error" id="f-dni-err" hidden>Escribí el DNI con 7 u 8 números.</p></div>
+                <div class="field"><label for="f-genero">Género</label>
+                  <select id="f-genero" name="genero" required disabled aria-describedby="f-genero-err">
+                    <option value="">Elegí uno</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                  </select>
+                  <p class="field__error" id="f-genero-err" hidden>Elegí el género que figura en el DNI.</p></div>
+              </div>
+              <fieldset class="autos">
+                <legend>Auto</legend>
+                <label><input type="radio" name="auto" value="cronos" required aria-describedby="f-auto-err"><img src="img/cronos.webp" alt=""><span>Cronos</span></label>
+                <label><input type="radio" name="auto" value="argo" aria-describedby="f-auto-err"><img src="img/argo.webp" alt=""><span>Argo</span></label>
+                <label><input type="radio" name="auto" value="strada" aria-describedby="f-auto-err"><img src="img/strada.webp" alt=""><span>Strada</span></label>
+                <p class="field__error" id="f-auto-err" hidden>Elegí uno de los tres autos.</p>
+              </fieldset>
+              <div class="field field--full"><label for="f-tel">Teléfono</label>
+                <input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required pattern="[\s\d+()\-]{8,20}" aria-describedby="f-tel-err">
+                <p class="field__error" id="f-tel-err" hidden>Escribí tu celular con código de área, por ejemplo 351 555 1234.</p></div>
+              <div class="btn-row"><button class="btn btn--primary" type="submit">Ver si califico</button></div>
+              <p class="form__status" role="status" data-form-status></p>
+            </form>
+
+            <div class="resultado" data-res="espera" hidden>
+              <h3>Consultando tu crédito</h3>
+              <p class="espera"><i aria-hidden="true"></i>Puede tardar hasta un minuto. No cierres esta página.</p>
+            </div>
+            <div class="resultado" data-res="ok" hidden tabindex="-1">
+              <h3>Felicitaciones, podés acceder a la promo.</h3>
+              <p>Un asesor de Tutu Automotores ya se va a comunicar con vos al teléfono que dejaste.</p>
+            </div>
+            <div class="resultado" data-res="no" hidden tabindex="-1">
+              <h3>En este momento no hay oferta disponible para este DNI.</h3>
+              <p>¿Querés probar con el de alguna otra persona de confianza?</p>
+              <div class="btn-row"><button class="btn btn--secondary" type="button" data-otra>Probar con otro DNI</button></div>
+            </div>
+            <div class="resultado" data-res="agotado" hidden tabindex="-1">
+              <h3>Se completaron los 50 cupos.</h3>
+              <p>Un asesor de Tutu Automotores puede contarte las otras formas de financiar tu Fiat.</p>
+            </div>
+            <div class="resultado" data-res="error" hidden tabindex="-1">
+              <h3>No pudimos hacer la consulta ahora.</h3>
+              <p>Tus datos siguen cargados. Probá de nuevo en unos minutos.</p>
+              <div class="btn-row"><button class="btn btn--secondary" type="button" data-volver>Volver al formulario</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="preguntas" aria-labelledby="preguntas-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-6">
+          <div class="section-head">
+            <h2 id="preguntas-h">Preguntas sobre la promo</h2>
+          </div>
+          <div class="faq">
+            <div class="faq__item"><h3>¿Tengo que poner entrega?</h3><p>No. Se financia el 100% del auto; el patentamiento no está incluido.</p></div>
+            <div class="faq__item"><h3>¿Cuántos cupos hay?</h3><p>50 en total. Cuando se completan, la promo termina.</p></div>
+            <div class="faq__item"><h3>¿Y si mi DNI no califica?</h3><p>Podés probar con el DNI de una persona de confianza que saque el crédito a su nombre.</p></div>
+            <div class="faq__item"><h3>¿Quién me llama?</h3><p>Un asesor de Tutu Automotores, al teléfono que dejaste, para cerrar la operación.</p></div>
+          </div>
+        </div>
+        <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="img/strada-salon.jpg" alt="Fiat Strada Freedom doble cabina negra, de frente" width="960" height="720" loading="lazy" data-source="client" data-subject="Fiat Strada"></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Reservá uno de los 50 cupos</h2><p class="t-lead">Cargá tu CUIT o tu DNI y un asesor te llama si calificás.</p></div>
+        <a class="btn btn--primary" href="#califica">Ver si califico<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word" aria-hidden="true">Tutu</p>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top" aria-label="Tutu Automotores, inicio"><img src="img/tutu-logo.png" alt="Tutu Automotores" width="452" height="143"></a>
+          <p class="footer__lede">Concesionaria de autos 0 km y usados en Córdoba, con varias sucursales.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Promo</h3><ul><li><a href="#modelos">Modelos</a></li><li><a href="#califica">Calificar</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Ayuda</h3><ul><li><a href="#preguntas">Preguntas</a></li></ul></div>
+        <div class="span-4 footer__col"><h3>Salón</h3><ul><li>Polo 52, Autopista Córdoba–Rosario</li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Tutu Automotores</span>
+        <div class="socials"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Acciones rápidas">
+  <a class="btn btn--primary" href="#califica">Ver si califico</a>
+</nav>
+
+<script>
+/* Promo 100% financiado: califica por Ruthina (solo Bancor y Banco Nación).
+   Contrato con el backend (promo100-route.js):
+     POST {api}/api/promo100/calificar  {cuit, auto, telefono, dni?, genero?, origen}
+       -> {estado: "aprobado" | "rechazado" | "pendiente" | "agotado", id?}
+     GET  {api}/api/promo100/estado/:id -> igual que arriba (mientras el robot consulta)
+     GET  {api}/api/promo100/cupos      -> {total: 50, restantes: n}
+   Al cliente nunca se le muestra el banco ni el monto. */
+(function () {
+  const form = document.getElementById('form-califica');
+  const card = document.getElementById('califica-card');
+  const API = (form.dataset.api || '').replace(/\/$/, '');
+  const panes = k => card.querySelector(`[data-res="${k}"]`);
+  const show = k => {
+    form.hidden = k !== 'form';
+    card.querySelectorAll('[data-res]').forEach(p => { p.hidden = p.dataset.res !== k; });
+    if (k !== 'form' && k !== 'espera') panes(k).focus();
+  };
+
+  // CUIT o DNI: el grupo que no se usa queda deshabilitado y no se valida
+  const setModo = modo => {
+    card.querySelectorAll('[data-grupo]').forEach(g => {
+      const on = g.dataset.grupo === modo;
+      g.hidden = !on;
+      g.querySelectorAll('input, select').forEach(el => { el.disabled = !on; if (!on) { el.removeAttribute('aria-invalid'); const e = document.getElementById(el.id + '-err'); if (e) e.hidden = true; } });
+    });
+  };
+  form.querySelectorAll('input[name="modo"]').forEach(r => r.addEventListener('change', () => setModo(r.value)));
+
+  // las tarjetas de modelos dejan el auto elegido
+  document.querySelectorAll('a[data-auto]').forEach(a => a.addEventListener('click', () => {
+    const r = form.querySelector(`input[name="auto"][value="${a.dataset.auto}"]`);
+    if (r) r.checked = true;
+  }));
+
+  // CUIL a partir del DNI y el género (20 masculino, 27 femenino; 23 cuando el dígito da 10)
+  function cuilDesdeDni(dni, genero) {
+    dni = String(dni).replace(/\D/g, '').padStart(8, '0');
+    let pre = genero === 'F' ? '27' : '20';
+    const calc = p => {
+      const n = (p + dni).split('').map(Number), w = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
+      const r = 11 - (n.reduce((s, d, i) => s + d * w[i], 0) % 11);
+      return r === 11 ? 0 : r;
+    };
+    let dv = calc(pre);
+    if (dv === 10) { pre = '23'; dv = genero === 'F' ? 4 : 9; }
+    return pre + dni + dv;
+  }
+
+  // cupos: el número real si Ruthina lo da; si no, queda "50 en total"
+  if (API) fetch(API + '/api/promo100/cupos').then(r => r.ok ? r.json() : null).then(d => {
+    if (d && Number.isFinite(d.restantes)) {
+      document.querySelector('[data-cupos]').textContent = d.restantes;
+      document.querySelector('[data-cupos-txt]').textContent = d.restantes === 1 ? 'cupo disponible de 50' : 'cupos disponibles de 50';
+    }
+  }).catch(() => {});
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  async function consultar(body) {
+    const res = await fetch(API + '/api/promo100/calificar', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) });
+    if (!res.ok) throw new Error(res.status);
+    let d = await res.json();
+    const hasta = Date.now() + 180000;
+    while (d.estado === 'pendiente' && d.id && Date.now() < hasta) {
+      await sleep(4000);
+      const r = await fetch(API + '/api/promo100/estado/' + encodeURIComponent(d.id));
+      if (!r.ok) throw new Error(r.status);
+      d = await r.json();
+    }
+    return d;
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form.checkValidity()) return;          // system.js marca los errores bajo cada campo
+    e.stopImmediatePropagation();
+    const fd = new FormData(form);
+    const modo = fd.get('modo');
+    const body = {
+      auto: fd.get('auto'),
+      telefono: String(fd.get('telefono')).trim(),
+      origen: 'landing-promo-100'
+    };
+    if (modo === 'dni') {
+      body.dni = String(fd.get('dni')).replace(/\D/g, '');
+      body.genero = fd.get('genero');
+      body.cuit = cuilDesdeDni(body.dni, body.genero);
+    } else {
+      body.cuit = String(fd.get('cuit')).replace(/\D/g, '');
+    }
+    if (!API) { show('error'); return; }
+    show('espera');
+    try {
+      const d = await consultar(body);
+      if (d.estado === 'aprobado') show('ok');
+      else if (d.estado === 'rechazado') show('no');
+      else if (d.estado === 'agotado') show('agotado');
+      else show('error');
+    } catch { show('error'); }
+  }, true);
+
+  card.querySelector('[data-otra]').addEventListener('click', () => {
+    ['f-cuit', 'f-dni'].forEach(id => { document.getElementById(id).value = ''; });
+    document.getElementById('f-genero').value = '';
+    show('form');
+    form.querySelector('input[name="modo"]:checked').focus();
+  });
+  card.querySelector('[data-volver]').addEventListener('click', () => { show('form'); });
+})();
+</script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+</body>
+</html>
