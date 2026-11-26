@@ -7,7 +7,6 @@ Califica con CUIT, o con DNI + género (calcula el CUIL), contra Ruthina usando 
 - `index.html` — la landing (formulario, resultados, cupos).
 - `img/` — autos recortados de las placas, foto de portada y logo.
 - `assets/` — estilos y scripts del sistema de diseño.
-- `promo100-route.js` — rutas para sumar al server de Ruthina (compara-conejo). No corre acá.
 - `package.json` — sirve la página estática en Railway.
 
 ## Publicar en Railway
@@ -15,22 +14,21 @@ Califica con CUIT, o con DNI + género (calcula el CUIL), contra Ruthina usando 
 2. Railway detecta Node y corre `npm start` (sirve la carpeta con `serve`).
 3. Settings → Networking → Generate Domain.
 
-## Conectar con Ruthina
-1. Copiar `promo100-route.js` al repo COMPARA-CONEJO y montarlo en `server.js`
-   (instrucciones al principio del archivo): pasar `pool` y `consultarBanco(banco, cuit)`
-   conectado a la consulta de Bancor y Nación que ya usa Consulta Créditos.
-2. Poner en `origenesPermitidos` el dominio que generó Railway para esta landing.
-3. En `index.html`, completar `data-api=""` del formulario con la URL de compara-conejo
-   (por ejemplo `https://compara-conejo-production.up.railway.app`).
+## Conexión con Ruthina
+La landing llama a `https://compara-conejo-production.up.railway.app` (atributo `data-api` del formulario en `index.html`).
+Las rutas están en el repo COMPARA-CONEJO, archivo `promo100.js`:
+- Cada consulta abre un pedido en "Pedidos Bancos" con origen `promo-100`.
+- La consulta automática de Ruthina lo resuelve usando **solo Bancor y Nación**.
+- Si los bancos no contestan en el tiempo límite, la landing dice "Recibimos tus datos" y un asesor lo revisa.
 
-Mientras `data-api` esté vacío, el formulario muestra "No pudimos hacer la consulta ahora".
+Variables opcionales en Railway (compara-conejo): `PROMO100_CUPOS` (50), `PROMO100_MAX_POR_IP` (8).
 
 ## Endpoints que usa la página
-- `POST /api/promo100/calificar` → `{estado: pendiente|aprobado|rechazado|agotado, id?}`
-- `GET /api/promo100/estado/:id`
+- `POST /api/promo100/calificar` → `{estado: pendiente, id}` o `{estado: agotado}`
+- `GET /api/promo100/estado/:id` → `{estado: pendiente|aprobado|rechazado|revision}`
 - `GET /api/promo100/cupos` → `{total: 50, restantes}`
 
 ## Errores comunes
-- **CORS bloqueado** en la consola: falta el dominio de la landing en `origenesPermitidos`.
-- **Siempre "No pudimos hacer la consulta"**: `data-api` vacío, mal escrito o con `/` al final mal puesto; o el server de Ruthina no tiene las rutas montadas (probar abrir `<api>/api/promo100/cupos`).
+- **Siempre "No pudimos hacer la consulta"**: abrir `https://compara-conejo-production.up.railway.app/api/promo100/cupos`; si no responde `{total, restantes}`, compara-conejo no tiene la última versión desplegada.
+- **Muchos "Recibimos tus datos"**: las sesiones de Bancor o Nación en Consulta Créditos están cerradas (ver el estado en Pedidos Bancos).
 - **429**: el mismo IP hizo más de 8 consultas en una hora (límite anti-abuso de la ruta).

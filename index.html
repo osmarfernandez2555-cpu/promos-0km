@@ -217,10 +217,10 @@
         </div>
         <div class="span-6 start-7">
           <div class="califica-card" id="califica-card">
-            <!-- Formulario: califica con Ruthina, solo Banco de Córdoba (Bancor) y Banco Nación.
-                 data-api: la URL del servicio de Ruthina en Railway que atiende /api/promo100 (ver promo100-route.js). -->
+            <!-- Formulario: califica con Ruthina (compara-conejo, promo100.js), solo Bancor y Banco Nación.
+                 data-api: la URL de compara-conejo en Railway. -->
             <form class="form" id="form-califica" action="mailto:promo@tutuautomotores.example" method="post" enctype="text/plain"
-                  data-api="" data-fix="Revisá {n} datos." novalidate>
+                  data-api="https://compara-conejo-production.up.railway.app" data-fix="Revisá {n} datos." novalidate>
               <fieldset class="seg">
                 <legend>Calificar con</legend>
                 <label><input type="radio" name="modo" value="cuit" checked><span>CUIT o CUIL</span></label>
@@ -269,6 +269,10 @@
               <h3>En este momento no hay oferta disponible para este DNI.</h3>
               <p>¿Querés probar con el de alguna otra persona de confianza?</p>
               <div class="btn-row"><button class="btn btn--secondary" type="button" data-otra>Probar con otro DNI</button></div>
+            </div>
+            <div class="resultado" data-res="revision" hidden tabindex="-1">
+              <h3>Recibimos tus datos.</h3>
+              <p>Los bancos no respondieron a tiempo. Un asesor de Tutu Automotores revisa tu caso y te llama al teléfono que dejaste.</p>
             </div>
             <div class="resultado" data-res="agotado" hidden tabindex="-1">
               <h3>Se completaron los 50 cupos.</h3>
@@ -338,10 +342,10 @@
 
 <script>
 /* Promo 100% financiado: califica por Ruthina (solo Bancor y Banco Nación).
-   Contrato con el backend (promo100-route.js):
+   Backend: compara-conejo (Ruthina), archivo promo100.js:
      POST {api}/api/promo100/calificar  {cuit, auto, telefono, dni?, genero?, origen}
-       -> {estado: "aprobado" | "rechazado" | "pendiente" | "agotado", id?}
-     GET  {api}/api/promo100/estado/:id -> igual que arriba (mientras el robot consulta)
+       -> {estado: "pendiente", id} | {estado: "agotado"}
+     GET  {api}/api/promo100/estado/:id -> {estado: "pendiente" | "aprobado" | "rechazado" | "revision"}
      GET  {api}/api/promo100/cupos      -> {total: 50, restantes: n}
    Al cliente nunca se le muestra el banco ni el monto. */
 (function () {
@@ -433,6 +437,7 @@
       if (d.estado === 'aprobado') show('ok');
       else if (d.estado === 'rechazado') show('no');
       else if (d.estado === 'agotado') show('agotado');
+      else if (d.estado === 'revision' || d.estado === 'pendiente') show('revision');
       else show('error');
     } catch { show('error'); }
   }, true);
