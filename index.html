@@ -392,10 +392,11 @@
     const res = await fetch(API + '/api/promo100/calificar', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) });
     if (!res.ok) throw new Error(res.status);
     let d = await res.json();
+    const id = d.id;                       // la respuesta de /estado no trae el id: se guarda acá
     const hasta = Date.now() + 180000;
-    while (d.estado === 'pendiente' && d.id && Date.now() < hasta) {
+    while (d.estado === 'pendiente' && id && Date.now() < hasta) {
       await sleep(4000);
-      const r = await fetch(API + '/api/promo100/estado/' + encodeURIComponent(d.id));
+      const r = await fetch(API + '/api/promo100/estado/' + encodeURIComponent(id), { cache: 'no-store' });
       if (!r.ok) throw new Error(r.status);
       d = await r.json();
     }
