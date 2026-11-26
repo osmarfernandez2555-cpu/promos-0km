@@ -47,13 +47,18 @@
      modelos, el selector de auto del formulario y el panel de resultado -->
 <style>
   :is(h1, h2) { font-style: italic; font-weight: 800; font-stretch: 112%; letter-spacing: -0.02em; }
-  .hero--photo h1 { text-transform: uppercase; line-height: .98; }
+  .hero--photo h1 { text-transform: uppercase; line-height: .98; hyphens: manual; -webkit-hyphens: manual; overflow-wrap: normal; word-break: keep-all; }
+  @media (max-width: 1023px) {
+    .hero--photo h1 { font-size: min(var(--ly-h1-xl), 11.2vw); max-width: none; }
+    .hero--photo > .hero__bg { content: url("img/hero-autos-movil.jpg"); object-position: 50% 60%; }
+  }
   .nav__logo img { height: 36px; width: auto; }
   .wa-float { position: fixed; right: 20px; bottom: calc(var(--bar, 0px) + 20px); z-index: 9; display: inline-flex; align-items: center; gap: 8px;
     height: 48px; padding: 0 18px 0 14px; border-radius: 999px; background: #25d366; color: #0b2e17; font-weight: 600; font-size: 15px;
     box-shadow: 0 8px 24px -10px rgb(0 0 0 / .6); transition: transform .15s ease; }
   .wa-float:hover { transform: translateY(-2px); }
   .wa-float:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  @media (max-width: 1023px) { .wa-float { transition: transform .2s ease, opacity .2s ease; } .wa-float.is-oculto { opacity: 0; transform: translateY(12px); pointer-events: none; } }
   @media (max-width: 639px) { .wa-float { width: 52px; height: 52px; padding: 0; justify-content: center; right: 16px; } .wa-float span { display: none; } .wa-float svg { width: 26px; height: 26px; } }
   @media (prefers-reduced-motion: reduce) { .wa-float { transition: none; } }
   .footer .nav__logo img { height: 44px; }
@@ -61,7 +66,7 @@
   /* los datos del hero van debajo de los botones, sin la línea que cruzaba por debajo de los autos */
   .hero--photo[data-calm="left"] .hero__facts { position: static; border-top: 0; padding-top: 0; margin-top: var(--s-7); }
   @media (min-width: 1024px) { .hero--photo[data-calm="left"] .hero__facts { width: calc(50% - var(--gutter) / 2); } .hero--photo[data-calm="left"] .hero__facts > div { grid-column: auto / span 4; } }
-  .hero--photo[data-calm="left"] > .wrap > .hero-text { justify-content: center; }
+  @media (min-width: 1024px) { .hero--photo[data-calm="left"] > .wrap > .hero-text { justify-content: center; } }
 
   #modelos .panel { --p-h: 300px; background: radial-gradient(120% 90% at 50% 100%, #1f5bff 0%, #0b1f6e 62%); }
   #modelos .panel img { position: absolute; inset: auto 6% 10% 6%; width: 88%; height: auto; object-fit: contain; }
@@ -107,6 +112,10 @@
   .develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(600px, var(--ly-fit, 600px)); }
   .develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
   @media (max-width: 1023px) { .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
+  @media (max-width: 639px) and (max-height: 800px) {
+    .hero--photo { --photo: 34svh; }
+    #modelos .panel { --p-h: 130px !important; }
+  }
   @media (max-width: 639px) {
     .hero-notice { display: none; }
     #preguntas .develop { display: none; }
@@ -447,6 +456,19 @@
     form.querySelector('input[name="modo"]:checked').focus();
   });
   card.querySelector('[data-volver]').addEventListener('click', () => { show('form'); });
+})();
+</script>
+<script>
+/* WhatsApp flotante: en celular y tablet se esconde mientras se ve el botón "Ver si califico" del hero */
+(function () {
+  var wa = document.querySelector('.wa-float'), btn = document.querySelector('.hero .btn--primary');
+  if (!wa || !btn || !('IntersectionObserver' in window)) return;
+  var mq = window.matchMedia('(max-width: 1023px)');
+  new IntersectionObserver(function (e) {
+    var visible = e[0].isIntersecting && mq.matches;
+    wa.classList.toggle('is-oculto', visible);
+    if (visible) wa.setAttribute('tabindex', '-1'); else wa.removeAttribute('tabindex');
+  }).observe(btn);
 })();
 </script>
 <script type="module" src="assets/system.js"></script>
