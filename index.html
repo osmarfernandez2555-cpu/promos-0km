@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tutu Automotores: Fiat 0 km financiado al 100% en Córdoba</title>
+<title>Tutu Automotores: Fiat 0km financiado al 100% en Córdoba</title>
 <meta name="description" content="Fiat Cronos, Argo o Strada con el 100% financiado. Cupos limitados: cargá tu CUIT o DNI y fijate si calificás.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fiat 0 km financiado al 100%, cupos limitados en Tutu Automotores">
+<meta property="og:title" content="Fiat 0km financiado al 100%, cupos limitados en Tutu Automotores">
 <meta property="og:description" content="Cronos, Argo o Strada financiados completos. Fijate si calificás con tu CUIT o DNI.">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -46,6 +46,7 @@
 <!-- page CSS: el estilo de las placas de Tutu (itálica pesada y ancha, como los flyers), las tarjetas de los
      modelos, el selector de auto del formulario y el panel de resultado -->
 <style>
+  :is(h1, h2, h3) { hyphens: manual; -webkit-hyphens: manual; }
   :is(h1, h2) { font-style: italic; font-weight: 800; font-stretch: 112%; letter-spacing: -0.02em; }
   .hero--photo h1 { text-transform: uppercase; line-height: .98; hyphens: manual; -webkit-hyphens: manual; overflow-wrap: normal; word-break: keep-all; }
   @media (max-width: 1023px) {
@@ -69,9 +70,9 @@
   @media (min-width: 1024px) { .hero--photo[data-calm="left"] > .wrap > .hero-text { justify-content: center; } }
 
   #modelos .panel { --p-h: 300px; background: radial-gradient(120% 90% at 50% 100%, #1f5bff 0%, #0b1f6e 62%); }
-  #modelos .panel img { position: absolute; inset: auto 6% 10% 6%; width: 88%; height: auto; object-fit: contain; }
+  #modelos .panel > img.frame__img { inset: 8% 6% 6% 6%; width: 88%; height: 86%; object-fit: contain; object-position: 50% 100%; }
   .menu-card .panel { --p-h: 200px; background: radial-gradient(120% 90% at 50% 100%, #1f5bff 0%, #0b1f6e 62%); }
-  .menu-card .panel img { position: absolute; inset: auto 8% 10% 8%; width: 84%; height: auto; }
+  .menu-card .panel > img { position: absolute; inset: 8% 8% 6% 8%; width: 84%; height: 86%; max-width: none; object-fit: contain; object-position: 50% 100%; }
 
   .cupos { display: flex; flex-direction: column; gap: var(--s-1); margin-top: var(--s-8); }
   .cupos__n { font: italic 800 var(--t-stat)/1 var(--font-display); font-stretch: 112%; letter-spacing: -0.03em; }
@@ -128,7 +129,7 @@
 </style>
 </head>
 <body>
-<!-- type: product (autos 0 km 100% financiados; Tutu Automotores, concesionaria en Córdoba)
+<!-- type: product (autos 0km 100% financiados; Tutu Automotores, concesionaria en Córdoba)
      deal: hero photo, nav nav-cards, close close-word, footer footer-columns, rhythm brand-band, buttons arrow,
      mark: el logo propio de Tutu (reemplaza ring); palette: los colores del cliente (azul y blanco de sus placas) via start.mjs brand
      moments: picture-develops en #modelos -->
@@ -174,11 +175,11 @@
 
 <main id="top">
   <section class="hero hero--photo" data-enter data-calm="left" data-box="none" data-tone="dark" aria-labelledby="hero-h">
-    <img class="hero__bg" src="img/hero-autos.jpg" alt="Fiat Cronos, Fiat Strada y Fiat Argo 0 km sobre fondo azul" style="--ly-pos: 100% 50%; --ly-pos-phone: 100% 72%" fetchpriority="high" data-source="client" data-subject="los tres Fiat de la promo">
+    <img class="hero__bg" src="img/hero-autos.jpg" alt="Fiat Cronos, Fiat Strada y Fiat Argo 0km sobre fondo azul" style="--ly-pos: 100% 50%; --ly-pos-phone: 100% 72%" fetchpriority="high" data-source="client" data-subject="los tres Fiat de la promo">
     <div class="wrap"><div class="hero-text">
       <div class="hero__text">
         <p class="hero-notice">Promo con cupos limitados</p>
-        <h1 id="hero-h">Fiat 0 km financiado al 100%</h1>
+        <h1 id="hero-h">Fiat 0km financiado al 100%</h1>
         <p class="hero__lead">Cronos, Argo o Strada financiado completo en Tutu Automotores, Córdoba. Cupos limitados.</p>
         <div class="btn-row"><a class="btn btn--primary" href="#califica">Ver si califico<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="#modelos">Ver los modelos</a></div>
       </div>
@@ -193,7 +194,7 @@
   <section class="section" id="modelos" aria-labelledby="modelos-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="modelos-h">Tres Fiat 0 km para elegir. <span class="muted">Los tres entran en la promo de 100% financiado.</span></h2>
+        <h2 id="modelos-h">Tres Fiat 0km para elegir. <span class="muted">Los tres entran en la promo de 100% financiado.</span></h2>
       </div>
       <div class="grid">
         <a class="card card--open span-4" href="#califica" data-auto="cronos">
@@ -335,7 +336,7 @@
       <div class="grid">
         <div class="span-4 stack-4">
           <a class="nav__logo" href="#top" aria-label="Tutu Automotores, inicio"><img src="img/tutu-logo.png" alt="Tutu Automotores" width="452" height="143"></a>
-          <p class="footer__lede">Concesionaria de autos 0 km y usados en Córdoba, con varias sucursales.</p>
+          <p class="footer__lede">Concesionaria de autos 0km y usados en Córdoba, con varias sucursales.</p>
         </div>
         <div class="span-2 footer__col"><h3>Promo</h3><ul><li><a href="#modelos">Modelos</a></li><li><a href="#califica">Calificar</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Ayuda</h3><ul><li><a href="#preguntas">Preguntas</a></li></ul></div>
